@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">        
+
+        <script>
+            function validate(){
+                let username = document.getElementById("username").value;
+                let password = document.getElementById("password").value;
+                let repetedpassword = document.getElementById("ReperePassword").value;
+                let email = document.getElementById("email").value;
+                let name = document.getElementById("name").value;
+                let surname = document.getElementById("surname").value;
+                
+    
+                let specialLetters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                let validation = /[A-Z]+[a-z]+[0-9]+/;
+                if(username != null){
+                    if(specialLetters.test(password)){
+                        if(validation.test(password)){
+                            if(password === repetedpassword){
+                                if(email != null){
+                                    return true;
+                                }else{
+                                    alert("email nie może być pusty");
+                                }
+                            }else{
+                                alert("Hasła muszą być takie same");
+                            }
+                        }else{
+                            alert("Hasło musi zawierać conajmniej 1 dużą literę 1 małą literę liczbę oraz znak specjalny");
+                        }
+                    }else{
+                        alert("Hasło musi zawierać conajmniej 1 dużą literę 1 małą literę liczbę oraz znak specjalny");
+                    }
+                }else{
+                    alert("Nazwa użytkownika nie może być pusta!");
+                }
+    
+                return false;
+            }
+            validate();
+        </script>
+    </head>
+    <body>
+        <div id="banner">
+            <h1>Egzaminy zawodowe</h1>
+        </div>
+
+        <div id="navbar">
+            <a href = "#">Zaloguj</a>
+            <a href = "signIn.php">Zarejestruj</a>
+            <a href = "#">FAQ</a>
+        
+        </div>
+
+        <div id="center">
+            <h2>Zarejestruj się!</h2>
+            <form action="AddingUsers.php" method="POST" onSubmit="return validate()">
+                <p>Podaj nazwę użytkownika(Wymagane): <input type="text" name="username" id="username"> </p>
+                <p>Podaj hasło(Wymagane): <input type="password" name="password" id="password"> </p>
+                <p>Powtórz hasło(Wymagane): <input type="password" name="RepetePassword" id="ReperePassword"> </p>
+                <p>Podaj Email(Wymagane): <input type="text" name="email" id="email"> </p>
+                <p>Podaj imię: <input type="text" name="name" id="name"> </p>
+                <p>Podaj nazwisko: <input type="text" name="surname" id="surname"> </p>
+                <input type="submit" value="zarejestruj się">
+            </form>
+        </div>
+    </body>
+</html>
