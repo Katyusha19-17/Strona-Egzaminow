@@ -38,17 +38,36 @@ h2{
     font-size: 18px;
 }
 
-#center{
+#left{
     background-color: #fff;
     border-radius: 25px;
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    margin-bottom: 10px;
-    width: 100%;
+    float: left;
+    width: 49%;
     height: 700px;
     text-align: center;
-    padding: 20px;
+    margin: 5px;
+}
+
+#right{
+    background-color: #fff;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    float: right;
+    width: 49%;
+    height: 700px;
+    text-align: center;
+    margin: 5px;
+}
+
+li{
+    font-weight: bold;
+    float: left;
+    margin: 5px;
 }
 
 p{

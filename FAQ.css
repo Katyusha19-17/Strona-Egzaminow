@@ -45,11 +45,19 @@ h2{
     border-color: black;
     border-width: 1px;
     margin-bottom: 10px;
-    width: 100%;
-    height: 700px;
+    width: auto;
+    height: auto;
     text-align: center;
     padding: 20px;
+    float: center;
 }
+
+li{
+    font-weight: bold;
+    float: left;
+    margin: 5px;
+}
+
 
 p{
     font-size: 15px;

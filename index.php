@@ -11,10 +11,11 @@
         </div>
 
         <div id="navbar">
-            <a href = "#">Zaloguj</a>
-            <a href = "signIn.php">Zarejestruj</a>
-            <a href = "#">FAQ</a>
-        
+            <a href = "index.php">Home</a>
+            <a href = "LogIn.php">Zaloguj się</a>
+            <a href = "signIn.html">Zarejestruj się</a>
+            <a href = "basicInfo.php">Podstawowe informacje</a>
+            
         </div>
 
         <div id="center">
@@ -23,3 +24,10 @@
         </div>
     </body>
 </html>
+
+<?php
+    if(isset($_COOKIE["UserLoginUsername"]) && isset($_COOKIE["UserLoginPassword"]) && isset($_COOKIE["UserLoginEmail"])){
+        echo "<script> window.location.href = 'Home.php' </script>";
+    }
+?>
+
