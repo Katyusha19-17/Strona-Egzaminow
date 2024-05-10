@@ -36,9 +36,9 @@
     $Connect = mysqli_connect("localhost","root","","egzaminyzawodowe");
 
     if(isset($_COOKIE["UserLogin"])){
-        setcookie("UserLogin", $loginUsername, -3600, "/");
-            setcookie("UserLogin", $loginPassword, -3600, "/");
-            setcookie("UserLogin", $loginEmail, -3600, "/");
+        setcookie("UserLoginUsername", "",time() - 3600, "/");
+        setcookie("UserLoginPassword", "",time() - 3600, "/");
+        setcookie("UserLoginEmail", "",time() - 3600, "/");
     }
 
     if (isset($_POST["loginUsername"]) && isset($_POST["loginPassword"]) && isset($_POST["loginEmail"])) {
@@ -55,9 +55,9 @@
             echo "<script>alert('Zalogowano!');</script>";
             
 
-            setcookie("UserLoginUsername", $loginUsername, time() + 60*60, "/");
-            setcookie("UserLoginPassword", $loginPassword, time() + 60*60, "/");
-            setcookie("UserLoginEmail", $loginEmail, time() + 60*60, "/");
+            setcookie("UserLoginUsername", $loginUsername, time() + 3600, "/");
+            setcookie("UserLoginPassword", $loginPassword, time() + 3600, "/");
+            setcookie("UserLoginEmail", $loginEmail, time() + 3600, "/");
 
             echo "<script> window.location.href = 'Home.php' </script>";
         } else {

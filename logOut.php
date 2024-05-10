@@ -15,6 +15,8 @@
             <a href = "logOut.php">Wyloguj</a>
             <a href = "FAQ.php">FAQ</a>
             <a href = "basicInfo.php">Podstawowe informacje</a>
+            <a href ="quiz.php">Wylosuj 40 pytań!</a>
+            <a href = "User.php">Twoje konto</a>
         
         </div>
 
@@ -27,10 +29,10 @@
 <?php
     error_reporting(E_ALL ^ E_WARNING);
 
-    setcookie("UserLoginUsername", $loginUsername, -60*60, "/");
-    setcookie("UserLoginPassword", $loginPassword, -60*60, "/");
-    setcookie("UserLoginEmail", $loginEmail, -60*60, "/");
-
+    setcookie("UserLoginUsername", "",time() - 3600, "/");
+    setcookie("UserLoginPassword", "",time() - 3600, "/");
+    setcookie("UserLoginEmail", "",time() - 3600, "/");
+    
     header("Location: index.php");
     exit();
 ?>

@@ -16,7 +16,10 @@
                     echo "<a href = 'Home.php'>Home</a>";
                     echo "<a href = 'logOut.php'>Wyloguj</a>";
                     echo "<a href = 'FAQ.php'>FAQ</a>";
-                    echo  "<a href = 'basicInfo.php'>Podstawowe informacje</a>";
+                    echo "<a href = 'basicInfo.php'>Podstawowe informacje</a>";
+                    echo "<a href ='quiz.php'>Wylosuj 40 pytań!</a>";
+                    echo "<a href = 'User.php'>Twoje konto</a>";
+
                 }else{
                     echo "<a href = 'index.php'>Home</a>";
                     echo "<a href = 'LogIn.php'>Zaloguj się</a>";
