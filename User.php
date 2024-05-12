@@ -54,6 +54,27 @@
         <div id="center">
             <h1>Tu możesz zmienić dane swojego konta</h1>
             <h2>Puste pole oznacza brak zmiany danego pola</h2>
+            <?php
+                error_reporting(E_ALL ^ E_WARNING);
+
+                $Connect = mysqli_connect("localhost","root","","egzaminyzawodowe");
+
+                $loginC = $_COOKIE["UserLoginUsername"];
+                $passwordC = $_COOKIE["UserLoginPassword"];
+                $emailC = $_COOKIE["UserLoginEmail"];
+                
+                $sql = "select * from uzytkownicy where username = '$loginC' and password = '$passwordC' and email = '$emailC'";
+
+                $resoult = mysqli_query($Connect,$sql);
+
+                $row = mysqli_fetch_assoc($resoult);
+                echo "Nazwa użytkownika: ".$row["username"]."<br>";
+                echo "Hasło: ".$row["password"]."<br>";
+                echo "Email: ".$row["email"]."<br>";
+                echo "Imie: ".$row["name"]."<br>";
+                echo "Nazwisko: ".$row["surname"];
+                
+            ?>
             <form action="User.php" method="POST" onSubmit="return validate()">
                 <p>Nazwa użytkownika: </p><input type="text" id="username" name="username"><br>
                 <p>Hasło: </p><input type = "password" id="password" name="password"><br>

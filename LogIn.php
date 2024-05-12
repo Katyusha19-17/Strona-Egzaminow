@@ -35,7 +35,7 @@
 
     $Connect = mysqli_connect("localhost","root","","egzaminyzawodowe");
 
-    if(isset($_COOKIE["UserLogin"])){
+    if(isset($_COOKIE["UserLoginUsername"])){
         setcookie("UserLoginUsername", "",time() - 3600, "/");
         setcookie("UserLoginPassword", "",time() - 3600, "/");
         setcookie("UserLoginEmail", "",time() - 3600, "/");
