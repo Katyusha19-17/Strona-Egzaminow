@@ -66,8 +66,8 @@ h2{
 
 li{
     font-weight: bold;
-    float: left;
     margin: 5px;
+    text-align: left;
 }
 
 p{
