@@ -59,8 +59,11 @@
                 $sql = "update uzytkownicy set quizAttempts = quizAttempts + 1 where username = '$login' and password = '$password' and email = '$email';";
                 $resoult = mysqli_query($Connect, $sql);
 
+                $zdane = 0;
+
                 if($precentage >= 50){
                     print("Zdane!");
+                    $zdane = 1;
 
                 }else{
                     print("Oblane");
@@ -95,6 +98,17 @@
                 $NovyAVG = ($StaryAVG + $score)/$QA;
                 $sql = "update uzytkownicy set avargeScore = '$NovyAVG' where username = '$login' and password = '$password' and email = '$email';";
                 $resoult = mysqli_query($Connect,$sql);
+
+                $sql = "select id from uzytkownicy where username = '$login' and password = '$password' and email = '$email';";
+                $resoult = mysqli_query($Connect, $sql);
+                $row = mysqli_fetch_row($resoult);
+                $idU = $row[0];
+                $data = date('Y-m-d');
+
+                $sql = "insert into postepy(id_user, score, passed, czas) values('$idU','$score','$zdane','$data');";
+                $resoult = mysqli_query($Connect,$sql);
+                
+                
 
                 setcookie("UserLoginUsername", "",time() - 3600, "/");
                 setcookie("UserLoginPassword", "",time() - 3600, "/");

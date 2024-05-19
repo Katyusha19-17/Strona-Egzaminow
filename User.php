@@ -34,7 +34,7 @@
         </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">        
+        <link rel="stylesheet" href="styleUser.css">        
     </head>
     <body>
         <div id="banner">
@@ -138,6 +138,29 @@
                             echo "Wystąpił błąd podczas aktualizacji danych";
                         }
                     }
+                }
+
+                printf("<h2>Historia twoich postępów: </h2><br>");
+
+                $sql = "select id from uzytkownicy where username = '$loginC' and password = '$passwordC' and email = '$emailC';";
+                $resoult = mysqli_query($Connect, $sql);
+                while($row = mysqli_fetch_row($resoult)){
+                    $idU = $row[0];
+                }
+
+                $sql = "select * from postepy where id_user = '$idU' order by czas ASC;";
+                $resoult = mysqli_query($Connect,$sql);
+
+                while($row = mysqli_fetch_row($resoult)){
+                    print("<p>");
+                    printf("Data testu: ".$row[4]."<br>");
+                    printf("Wynik testu: ".$row[2]."<br>");
+                    if($row[3] == 1){
+                     printf("Czy test został zdany: tak <br><br>");   
+                    }else{
+                        printf("Czy test został zdany: nie <br><br>");
+                    }
+                    print("</p>");
                 }
                 
 
