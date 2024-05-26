@@ -24,6 +24,7 @@ h2{
     margin-bottom: 10px;
     width: 100%;
     float: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #navbar{
@@ -36,6 +37,7 @@ h2{
     float: center;
     text-align: center;
     font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #left{
@@ -49,6 +51,7 @@ h2{
     height: 700px;
     text-align: center;
     margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #right{
@@ -62,6 +65,7 @@ h2{
     height: 700px;
     text-align: center;
     margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 li{
@@ -77,4 +81,8 @@ p{
 
 a+a{
     margin-left: 10px;
+}
+
+#navbar a:hover {
+    background-color: #2980b9;
 }

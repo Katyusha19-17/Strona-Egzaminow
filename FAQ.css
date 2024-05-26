@@ -67,3 +67,7 @@ p{
 a+a{
     margin-left: 10px;
 }
+
+#navbar a:hover {
+    background-color: #2980b9;
+}
