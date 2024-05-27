@@ -17,7 +17,8 @@
             <a href = "basicInfo.php">Podstawowe informacje</a>
             <a href ="quiz.php">Wylosuj 40 pytań!</a>
             <a href = "User.php">Twoje konto</a>
-            
+            <a href = "Historia.php">Historia</a>
+
         </div>
 
         <div id="center">

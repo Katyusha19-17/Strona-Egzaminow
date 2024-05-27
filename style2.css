@@ -46,9 +46,9 @@ h2{
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    float: left;
-    width: 49%;
-    height: 700px;
+    float: center;
+    width: 100%;
+    height: auto;
     text-align: center;
     margin: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -60,9 +60,9 @@ h2{
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    float: right;
-    width: 49%;
-    height: 700px;
+    float: center;
+    width: 100%;
+    height: auto;
     text-align: center;
     margin: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

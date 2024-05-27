@@ -48,7 +48,8 @@
             <a href = "basicInfo.php">Podstawowe informacje</a>
             <a href = "quiz.php">Wylosuj 40 pytań!</a>
             <a href = "User.php">Twoje konto</a>
-        
+            <a href = "Historia.php">Historia</a>
+
         </div>
 
         <div id="center">
@@ -69,7 +70,6 @@
 
                 $row = mysqli_fetch_assoc($resoult);
                 echo "Nazwa użytkownika: ".$row["username"]."<br>";
-                echo "Hasło: ".$row["password"]."<br>";
                 echo "Email: ".$row["email"]."<br>";
                 echo "Imie: ".$row["name"]."<br>";
                 echo "Nazwisko: ".$row["surname"];
@@ -77,7 +77,6 @@
             ?>
             <form action="User.php" method="POST" onSubmit="return validate()">
                 <p>Nazwa użytkownika: </p><input type="text" id="username" name="username"><br>
-                <p>Hasło: </p><input type = "password" id="password" name="password"><br>
                 <p>Email: </p><input type = "text" id="email" name="email"><br>
                 <p>Imie: </p><input type = "text" id="imie" name="imie"><br>
                 <p>Nazwisko: </p><input type = "text" id="nazwisko" name="nazwisko"><br> 
@@ -93,7 +92,6 @@
                 $emailC = $_COOKIE["UserLoginEmail"];
 
                 $username = $_POST["username"];
-                $password = $_POST["password"];
                 $email = $_POST["email"];
                 $imie = $_POST["imie"];
                 $nazwisko = $_POST["nazwisko"];
@@ -102,10 +100,6 @@
                 if(isset($_POST)){
                     if(!empty($username)){
                         $updates[] = "username = '$username'";
-                    }
-            
-                    if(!empty($password)){
-                        $updates[] = "password = '$password'";
                     }
             
                     if(!empty($email)){
@@ -140,28 +134,6 @@
                     }
                 }
 
-                printf("<h2>Historia twoich postępów: </h2><br>");
-
-                $sql = "select id from uzytkownicy where username = '$loginC' and password = '$passwordC' and email = '$emailC';";
-                $resoult = mysqli_query($Connect, $sql);
-                while($row = mysqli_fetch_row($resoult)){
-                    $idU = $row[0];
-                }
-
-                $sql = "select * from postepy where id_user = '$idU' order by czas ASC;";
-                $resoult = mysqli_query($Connect,$sql);
-
-                while($row = mysqli_fetch_row($resoult)){
-                    print("<p>");
-                    printf("Data testu: ".$row[4]."<br>");
-                    printf("Wynik testu: ".$row[2]."<br>");
-                    if($row[3] == 1){
-                     printf("Czy test został zdany: tak <br><br>");   
-                    }else{
-                        printf("Czy test został zdany: nie <br><br>");
-                    }
-                    print("</p>");
-                }
                 
 
                 mysqli_close($Connect)

@@ -35,6 +35,8 @@
 
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+ 
     $email = $_POST["email"];
 
     if(isset($_POST["name"])){
@@ -46,18 +48,18 @@
     } 
 
     if(isset($_POST["name"]) && isset($_POST["surname"])){
-        $sql = "INSERT INTO uzytkownicy(username, password, name, surname, email) VALUES ('$username','$password','$name','$surname','$email')";
+        $sql = "INSERT INTO uzytkownicy(username, password, name, surname, email) VALUES ('$username','$hashPassword','$name','$surname','$email')";
         $resoult = mysqli_query($Connect, $sql);
     }else{
         if(isset($_POST["name"])){
-            $sql = "INSERT INTO uzytkownicy(username, password, name, email) VALUES ('$username','$password','$name','$email')";
+            $sql = "INSERT INTO uzytkownicy(username, password, name, email) VALUES ('$username','$hashPassword','$name','$email')";
             $resoult = mysqli_query($Connect, $sql);
         }else{
             if(isset($_POST["surname"])){
-                $sql = "INSERT INTO uzytkownicy(username, password, surname, email) VALUES ('$username','$password','$surname','$email')";
+                $sql = "INSERT INTO uzytkownicy(username, password, surname, email) VALUES ('$username','$hashPassword','$surname','$email')";
                 $resoult = mysqli_query($Connect, $sql);
             }else{
-                    $sql = "INSERT INTO uzytkownicy(username, password, email) VALUES ('$username','$password','$email')";
+                    $sql = "INSERT INTO uzytkownicy(username, password, email) VALUES ('$username','$hashPassword','$email')";
                     $resoult = mysqli_query($Connect, $sql);
             }
         }

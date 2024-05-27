@@ -11,7 +11,7 @@
         ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">        
+        <link rel="stylesheet" href="styleUser.css">        
     </head>
     <body>
         <div id="banner">
@@ -26,10 +26,48 @@
             <a href ="quiz.php">Wylosuj 40 pytań!</a>
             <a href = "User.php">Twoje konto</a>
             <a href = "Historia.php">Historia</a>
+
         </div>
 
         <div id="center">
-            <h2>Witaj na stronie!</h2>
+
+        <?php
+
+error_reporting(E_ALL ^ E_WARNING);
+                  
+$Connect = mysqli_connect("localhost","root","","egzaminyzawodowe");
+
+$loginC = $_COOKIE["UserLoginUsername"];
+$passwordC = $_COOKIE["UserLoginPassword"];
+$emailC = $_COOKIE["UserLoginEmail"];
+
+
+printf("<h2>Historia twoich postępów: </h2><br>");
+
+$sql = "select id from uzytkownicy where username = '$loginC' and password = '$passwordC' and email = '$emailC';";
+$resoult = mysqli_query($Connect, $sql);
+while($row = mysqli_fetch_row($resoult)){
+    $idU = $row[0];
+}
+
+$sql = "select * from postepy where id_user = '$idU' order by czas ASC;";
+$resoult = mysqli_query($Connect,$sql);
+
+while($row = mysqli_fetch_row($resoult)){
+    print("<p>");
+    printf("Data testu: ".$row[4]."<br>");
+    printf("Wynik testu: ".$row[2]."<br>");
+    if($row[3] == 1){
+     printf("Czy test został zdany: tak <br><br>");   
+    }else{
+        printf("Czy test został zdany: nie <br><br>");
+    }
+    print("</p>");
+}
+
+?>
+
         </div>
     </body>
 </html>
+

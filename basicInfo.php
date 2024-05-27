@@ -19,6 +19,7 @@
                     echo "<a href = 'basicInfo.php'>Podstawowe informacje</a>";
                     echo "<a href ='quiz.php'>Wylosuj 40 pytań!</a>";
                     echo "<a href = 'User.php'>Twoje konto</a>";
+                    echo "<a href = 'Historia.php'>Historia</a>";
 
                 }else{
                     echo "<a href = 'index.php'>Home</a>";

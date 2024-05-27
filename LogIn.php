@@ -35,35 +35,48 @@
 
     $Connect = mysqli_connect("localhost","root","","egzaminyzawodowe");
 
+
     if(isset($_COOKIE["UserLoginUsername"])){
         setcookie("UserLoginUsername", "",time() - 3600, "/");
         setcookie("UserLoginPassword", "",time() - 3600, "/");
         setcookie("UserLoginEmail", "",time() - 3600, "/");
     }
 
-    if (isset($_POST["loginUsername"]) && isset($_POST["loginPassword"]) && isset($_POST["loginEmail"])) {
+    if (isset($_POST["loginUsername"]) && isset($_POST["loginPassword"]) && isset($_POST["loginEmail"])){
 
         $loginUsername = $_POST["loginUsername"];
         $loginPassword = $_POST["loginPassword"];
         $loginEmail = $_POST["loginEmail"];
 
-        $sql = "SELECT * FROM uzytkownicy WHERE username = '$loginUsername' AND password = '$loginPassword' AND email = '$loginEmail'";
+        
+
+        $sql = "SELECT * FROM uzytkownicy WHERE username = '$loginUsername' AND email = '$loginEmail'";
 
         $result = mysqli_query($Connect, $sql);
 
-        if ($result && mysqli_num_rows($result) > 0) {
-            echo "<script>alert('Zalogowano!');</script>";
-            
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+                if(hash_equals($row['password'], crypt($loginPassword, $row['password']))){
 
-            setcookie("UserLoginUsername", $loginUsername, time() + 3600, "/");
-            setcookie("UserLoginPassword", $loginPassword, time() + 3600, "/");
-            setcookie("UserLoginEmail", $loginEmail, time() + 3600, "/");
+                    echo "<script>alert('Zalogowano!');</script>";
 
-            echo "<script> window.location.href = 'Home.php' </script>";
-        } else {
-            echo "<script>alert('Błąd danych logowania');</script>";
+                    setcookie("UserLoginUsername", $loginUsername, time() + 3600, "/");
+                    setcookie("UserLoginPassword", $row['password'], time() + 3600, "/");
+                    setcookie("UserLoginEmail", $loginEmail, time() + 3600, "/");
+                    echo "<script> window.location.href = 'Home.php' </script>";
+                }else{
+                    echo "<script>alert('Błąd danych logowania');</script>";
+                }
+        }
+        echo $loginPassword;
+        echo $row['password'];
+        if(password_verify($LoginPassword, $row['password'])){
+            print("tak");
+        }else{
+            print("nie");
         }
     }
+
 
     mysqli_close($Connect);
 ?>

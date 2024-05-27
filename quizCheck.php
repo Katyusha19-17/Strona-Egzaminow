@@ -110,9 +110,12 @@
                 
                 
 
-                setcookie("UserLoginUsername", "",time() - 3600, "/");
-                setcookie("UserLoginPassword", "",time() - 3600, "/");
-                setcookie("UserLoginEmail", "",time() - 3600, "/");
+            //    setcookie("UserLoginUsername", "",time() - 3600, "/");
+            //    setcookie("UserLoginPassword", "",time() - 3600, "/");
+            //    setcookie("UserLoginEmail", "",time() - 3600, "/");
+
+            header("Location: Historia.php");
+
 
                 mysqli_close($Connect)
             ?>
